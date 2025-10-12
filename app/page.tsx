@@ -89,7 +89,7 @@ export default function FirstChoiceLanding() {
               height={300}
               />
             </div>
-            <div className="space-y-6 px-12 md:w-1/2 w-full">
+            <div className="space-y-6 px-12 md:w-1/2 w-full py-8">
               <h3 className="text-3xl font-bold text-gray-900 mb-8">Why Choose Our Transport Service?</h3>
               
               {[
@@ -119,12 +119,16 @@ export default function FirstChoiceLanding() {
                   desc: "Complete clearance assistance including customs documentation, import permits, and all regulatory requirements. We handle the paperwork, you enjoy the drive."
                 }
               ].map((item, i) => (
-                <div key={i} className="flex md:items-start items-center gap-4 p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="p-3 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex-shrink-0">
-                    <item.icon className="w-6 h-6 text-white" />
+                <div key={i} className="flex flex-col md:items-start items-center gap-4 p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className='flex flex-row gap-5'>
+                    <div className="p-3 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex-shrink-0 left-0 top-0">
+                      <item.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg mb-2 text-gray-900">{item.title}</h4>
+                    </div>
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg mb-2 text-gray-900">{item.title}</h4>
                     <p className="text-gray-600">{item.desc}</p>
                   </div>
                 </div>
@@ -132,8 +136,7 @@ export default function FirstChoiceLanding() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-8">
             {/* New Car Services */}
             <div className="bg-white border border-gray-200 rounded-lg p-6">
               <div className="flex items-start gap-4 mb-4">
