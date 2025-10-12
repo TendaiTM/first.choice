@@ -81,7 +81,7 @@ export default function FirstChoiceLanding() {
       <section className="py-16 px-4" id="services">
         <div className="max-w-7xl mx-auto">
           <div className='flex md:flex-row flex-col'>
-            <div className='w-1/2'>
+            <div className=' md:w-1/2 w-full'>
               <Image
               src='/smiley-woman.jpg'
               alt='image'
@@ -89,7 +89,7 @@ export default function FirstChoiceLanding() {
               height={300}
               />
             </div>
-            <div className="space-y-6 px-12 w-1/2">
+            <div className="space-y-6 px-12 md:w-1/2 w-full">
               <h3 className="text-3xl font-bold text-gray-900 mb-8">Why Choose Our Transport Service?</h3>
               
               {[
@@ -119,7 +119,7 @@ export default function FirstChoiceLanding() {
                   desc: "Complete clearance assistance including customs documentation, import permits, and all regulatory requirements. We handle the paperwork, you enjoy the drive."
                 }
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4 p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300">
+                <div key={i} className="flex md:items-start items-center gap-4 p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="p-3 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex-shrink-0">
                     <item.icon className="w-6 h-6 text-white" />
                   </div>
