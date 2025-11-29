@@ -242,7 +242,7 @@ export default function FirstChoiceLanding() {
         className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-20 px-4">
         <div className="max-w-7xl mx-auto text-left mt-93 mb-0">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Your <span className="text-yellow-300 text-shadow-black">First Choice</span> for<br />
+            Your <span className="text-blue-600 text-shadow-black">First Choice</span> for<br />
             Complete Car Solutions
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-2xl">
@@ -421,8 +421,8 @@ export default function FirstChoiceLanding() {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 px-4" id="about">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-4 bg-blue-950" id="about">
+        <div className="max-w-7xl mx-auto ">
           <div className='flex md:flex-row flex-col gap-12 items-center'>
             {/* Image Section */}
             <div className='md:w-1/2 w-full'>
@@ -430,8 +430,8 @@ export default function FirstChoiceLanding() {
                 <Image
                   src='/smiley-woman.jpg'
                   alt='About Our Company'
-                  width={900}
-                  height={600}
+                  width={500}
+                  height={500}
                   className="object-cover"
                 />
               </div>
@@ -441,32 +441,32 @@ export default function FirstChoiceLanding() {
             <div className="md:w-1/2 w-full space-y-6">
               <div>
                 <p className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-2">About Us</p>
-                <h2 className="text-4xl font-bold text-gray-900 mb-4">About Our Company</h2>
+                <h2 className="text-4xl font-bold text-gray-950 mb-4">About Our Company</h2>
                 <div className="w-20 h-1 bg-blue-600 mb-6"></div>
               </div>
 
-              <p className="text-gray-700 text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed">
                 We are a trusted car dealership based in Zimbabwe, dedicated to providing exceptional automotive solutions to our clients. With years of experience in the industry, we have built a reputation for reliability, transparency, and customer satisfaction.
               </p>
 
               <div className="space-y-4">
                 <div className="border-l-4 border-blue-600 pl-4">
-                  <h3 className="font-bold text-xl text-gray-900 mb-2">Our Mission</h3>
-                  <p className="text-gray-600">
+                  <h3 className="font-bold text-xl text-gray-950 mb-2">Our Mission</h3>
+                  <p className="">
                     To provide quality vehicles and comprehensive automotive services that exceed our customers&#39; expectations, making car ownership accessible and hassle-free for everyone.
                   </p>
                 </div>
 
                 <div className="border-l-4 border-blue-600 pl-4">
-                  <h3 className="font-bold text-xl text-gray-900 mb-2">What We Offer</h3>
-                  <p className="text-gray-600">
+                  <h3 className="font-bold text-xl text-gray-950 mb-2">What We Offer</h3>
+                  <p className="">
                     From new and pre-owned vehicle sales to transport services from Musina, clearance assistance, and complete documentation support - we handle every aspect of your automotive needs with professionalism and care.
                   </p>
                 </div>
 
                 <div className="border-l-4 border-blue-600 pl-4">
-                  <h3 className="font-bold text-xl text-gray-900 mb-2">Our Commitment</h3>
-                  <p className="text-gray-600">
+                  <h3 className="font-bold text-xl text-gray-950 mb-2">Our Commitment</h3>
+                  <p className="">
                     Based in Harare but serving clients across Zimbabwe, we are committed to delivering exceptional service, transparent pricing, and ongoing support throughout your car ownership journey.
                   </p>
                 </div>
@@ -474,12 +474,12 @@ export default function FirstChoiceLanding() {
 
               <div className="flex gap-4 pt-4">
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-blue-600">500+</p>
+                  <p className="text-3xl font-bold text-blue-600">100+</p>
                   <p className="text-gray-600 text-sm">Happy Clients</p>
                 </div>
                 <div className="w-px bg-gray-300"></div>
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-blue-600">1000+</p>
+                  <p className="text-3xl font-bold text-blue-600">500+</p>
                   <p className="text-gray-600 text-sm">Cars Sold</p>
                 </div>
                 <div className="w-px bg-gray-300"></div>
@@ -534,7 +534,7 @@ export default function FirstChoiceLanding() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">NEW CAR SERVICES</h3>
                 <p className="text-gray-600 text-sm">
-                  Complete support for new car purchases including financing assistance, insurance setup, and all registration requirements.
+                  Complete support for new car purchases including insurance setup, and all registration requirements.
                 </p>
               </div>
             </div>
@@ -592,7 +592,7 @@ export default function FirstChoiceLanding() {
       </section>    
 
       {/* CTA Section */}
-      <section id="contact"  className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20 px-4">
+      <section id="contact"  className="bg-gradient-to-br from-blue-950 via-gray-800 to-gray-900 py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             
@@ -603,7 +603,7 @@ export default function FirstChoiceLanding() {
               <div className="space-y-6">
                 {/* Phone */}
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -621,7 +621,7 @@ export default function FirstChoiceLanding() {
 
                 {/* Email */}
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -656,9 +656,9 @@ export default function FirstChoiceLanding() {
 
             {/* Our Info Column */}
             <div>
-              <h2 className="text-3xl font-bold text-white mb-8">Our Info</h2>
+              <h2 className="text-3xl font-bold text-white mb-8 flex items-center justify-center">Our Info</h2>
               
-              <nav className="space-y-4">
+              <nav className="space-y-4 flex flex-col items-center justify-center">
                 <a 
                   href="#home" 
                   className="block text-gray-300 text-lg hover:text-white hover:translate-x-2 transition-all"
@@ -694,21 +694,20 @@ export default function FirstChoiceLanding() {
 
             {/* Just a Click Column */}
             <div>
-              <h2 className="text-3xl font-bold text-white mb-8">Just a Click</h2>
               
-              <div className="space-y-6">
+              <div className="space-y-6 flex items-center justify-center flex-col">
                 {/* Inquire Now Button */}
                 
                   <a href="#contact"
-                  className="block w-full bg-red-600 text-white text-center py-4 px-6 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors"
+                  className="block md:w-75  w-full bg-blue-600 text-white text-center py-4 px-6 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors"
                 >
                   INQUIRE NOW
                 </a>
 
                 {/* Social Media Icons */}
-                <div className="flex gap-4">
+                <div className="flex md:flex-row items-center justify-center  gap-4">
                   
-                    <a href="https://facebook.com"
+                  <a href="https://facebook.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center transition-colors group"
@@ -718,7 +717,7 @@ export default function FirstChoiceLanding() {
                   </a>
                   
                   
-                    <a href="https://instagram.com"
+                  <a href="https://instagram.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-blue-400 hover:bg-blue-500 rounded-lg flex items-center justify-center transition-colors group"
@@ -728,7 +727,7 @@ export default function FirstChoiceLanding() {
                   </a>
 
                   
-                    <a href="https://twitter.com"
+                  <a href="https://twitter.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-sky-500 hover:bg-sky-600 rounded-lg flex items-center justify-center transition-colors group"
@@ -736,22 +735,8 @@ export default function FirstChoiceLanding() {
                   >
                     <Twitter className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                   </a>
-                </div>
-
-                {/* Additional Social Media */}
-                <div className="flex gap-4">
-                  
-                    <a href="https://linkedin.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-blue-700 hover:bg-blue-800 rounded-lg flex items-center justify-center transition-colors group"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
-                  </a>
-
-                  
-                    <a href="https://youtube.com"
+                                   
+                  <a href="https://youtube.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-red-500 hover:bg-red-600 rounded-lg flex items-center justify-center transition-colors group"
@@ -761,7 +746,7 @@ export default function FirstChoiceLanding() {
                   </a>
 
                   
-                    <a href="https://wa.me/263783370612"
+                  <a href="https://wa.me/263783370612"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-green-500 hover:bg-green-600 rounded-lg flex items-center justify-center transition-colors group"
@@ -781,7 +766,12 @@ export default function FirstChoiceLanding() {
       <footer className="bg-gray-950 text-gray-400 py-8 px-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
-            <Car className="w-5 h-5 text-blue-600" />
+            <Image
+                alt='Logo'
+                src='/logo.png'
+                width={30}
+                height={30}              
+              />
             <span className="text-white font-bold">First Choice</span>
           </div>
           <div className="text-center text-sm">
