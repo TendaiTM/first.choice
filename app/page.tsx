@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import { DollarSign, Facebook, Instagram, Twitter, Linkedin, Youtube, MessageCircle, Settings, Fuel, Gauge, Users, Car, Phone, Mail, MapPin } from 'lucide-react';
+import { DollarSign, Facebook, Instagram, Twitter, Linkedin, Youtube, MessageCircle, Settings, Fuel, Gauge, Users, Car, Phone, Mail, MapPin, Menu, X  } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -22,6 +22,7 @@ type CategoryFilter = 'all' | 'sedan' | 'hatchback' | 'truck' | 'suv';
 
 export default function FirstChoiceLanding() {
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('all');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   {/*const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -41,6 +42,15 @@ export default function FirstChoiceLanding() {
       [e.target.name]: e.target.value
     });
   };*/}
+
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   const featuredCars: Car[] = [
     {
@@ -143,9 +153,82 @@ export default function FirstChoiceLanding() {
                 Call Now
               </button>*/}
             </div>
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={toggleMobileMenu}
+                className="text-gray-700 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-2"
+                aria-label="Toggle menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>            
           </div>
+
+          {isMobileMenuOpen && (
+            <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                <a
+                  href="#home"
+                  className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
+                  onClick={closeMobileMenu}
+                >
+                  Home
+                </a>
+                <a
+                  href="#featured-cars"
+                  className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
+                  onClick={closeMobileMenu}
+                >
+                  Featured Cars
+                </a>
+                <a
+                  href="#about"
+                  className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
+                  onClick={closeMobileMenu}
+                >
+                  About
+                </a>
+                <a
+                  href="#services"
+                  className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
+                  onClick={closeMobileMenu}
+                >
+                  Services
+                </a>
+                <a
+                  href="#contact"
+                  className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
+                  onClick={closeMobileMenu}
+                >
+                  Contact
+                </a>
+                {/* ADDED: Optional Call Now button in mobile menu */}
+                {/*<div className="pt-2 border-t border-gray-200">
+                  <a
+                    href="tel:+263783123123"
+                    className="flex items-center justify-center w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 gap-2"
+                    onClick={closeMobileMenu}
+                  >
+                    <Phone className="w-4 h-4" />
+                    Call Now
+                  </a>
+                </div>*/}
+              </div>
+            </div>
+          )}
         </div>
       </nav>
+
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-opacity-50 z-40 md:hidden"
+          onClick={closeMobileMenu}
+        />
+      )}
 
       {/* Hero Section */}
       <section 
@@ -156,7 +239,7 @@ export default function FirstChoiceLanding() {
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
         }}
-        className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-20 px-4 ">
+        className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-20 px-4">
         <div className="max-w-7xl mx-auto text-left mt-93 mb-0">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Your <span className="text-yellow-300 text-shadow-black">First Choice</span> for<br />
