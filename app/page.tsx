@@ -1,28 +1,147 @@
+'use client'
+
 import React from 'react';
-import { Shield, Star, Clock, Truck, FileCheck, Users, Car, Megaphone, Phone, Mail, MapPin, CheckCircle } from 'lucide-react';
+import { DollarSign, Facebook, Instagram, Twitter, Linkedin, Youtube, MessageCircle, Settings, Fuel, Gauge, Users, Car, Phone, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
+import { useState } from 'react';
+import Link from 'next/link';
+
+interface Car {
+  id: number;
+  name: string;
+  image: string;
+  description: string;
+  transmission: 'Automatic' | 'Manual';
+  fuelType: 'Diesel' | 'Petrol' | 'Hybrid' | 'Electric';
+  mileage: 'Low Mileage' | 'Medium Mileage' | 'High Mileage';
+  category: 'sedan' | 'hatchback' | 'truck' | 'suv';
+  price: string;
+}
+
+type CategoryFilter = 'all' | 'sedan' | 'hatchback' | 'truck' | 'suv';
 
 export default function FirstChoiceLanding() {
+  const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('all');
+  {/*const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });*/}
+
+  {/*const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission
+    console.log('Form submitted:', formData);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };*/}
+
+  const featuredCars: Car[] = [
+    {
+      id: 1,
+      name: 'Toyota Hilux 2.8GD6',
+      image: '/Toyota.jpg',
+      description: 'Diesel engine, full leather interior, pre-loved vehicle, good condition',
+      transmission: 'Automatic',
+      fuelType: 'Diesel',
+      mileage: 'Low Mileage',
+      category: 'truck',
+      price: '50000',
+    },
+    {
+      id: 2,
+      name: 'Honda Fit',
+      image: '/honda.jpg',
+      description: 'Automatic transmission, recent import, very neat',
+      transmission: 'Automatic',
+      fuelType: 'Petrol',
+      mileage: 'Low Mileage',
+      category: 'hatchback',
+      price: '10000'
+    },
+    {
+      id: 3,
+      name: 'Jeep Cherokee',
+      image: '/Jeep.jpg',
+      description: 'Automatic transmission, very good fuel saver. Recent import with very low mileage',
+      transmission: 'Automatic',
+      fuelType: 'Petrol',
+      mileage: 'Low Mileage',
+      category: 'sedan',
+      price: '40,000'
+    },
+    {
+      id: 4,
+      name: 'Nissan Navara',
+      image: '/Navara.jpg',
+      description: 'Powerful diesel engine, 4x4 capability, excellent for both work and leisure',
+      transmission: 'Manual',
+      fuelType: 'Diesel',
+      mileage: 'Medium Mileage',
+      category: 'truck',
+      price: '32,000'
+    },
+    {
+      id: 5,
+      name: 'Toyota Fortuner',
+      image: '/Fortuner.png',
+      description: 'Spacious 7-seater SUV, leather seats, sunroof, perfect family vehicle',
+      transmission: 'Automatic',
+      fuelType: 'Diesel',
+      mileage: 'Low Mileage',
+      category: 'suv',
+      price: '45000'
+    },
+    {
+      id: 6,
+      name: 'Mazda Demio',
+      image: '/Demio.jpeg',
+      description: 'Compact and efficient, ideal city car, excellent fuel economy',
+      transmission: 'Automatic',
+      fuelType: 'Petrol',
+      mileage: 'Low Mileage',
+      category: 'hatchback',
+      price: '7500'
+    }
+  ];
+
+  const filteredCars = selectedCategory === 'all' 
+    ? featuredCars 
+    : featuredCars.filter(car => car.category === selectedCategory);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm fixed left-0 w-full">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> 
+      <nav className="bg-white shadow-sm fixed left-0 w-full z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
-              <Car className="w-6 h-6 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900">
+              <Image
+                alt='Logo'
+                src='/logo.png'
+                width={50}
+                height={50}              
+              />
+              <span className="text-xl font-bold text-gray-900 flex flex-col">
                 First Choice <span className="text-sm font-normal text-gray-600">Car Sales & Services</span>
               </span>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              <a href="#services" className="text-gray-700 hover:text-blue-600">Services</a>
+              <a href="#home" className="text-gray-700 hover:text-blue-600">Home</a>
+              <a href="#featured-cars" className="text-gray-700 hover:text-blue-600">Featured Cars</a>
               <a href="#about" className="text-gray-700 hover:text-blue-600">About</a>
+              <a href="#services" className="text-gray-700 hover:text-blue-600">Services</a>
               <a href="#contact" className="text-gray-700 hover:text-blue-600">Contact</a>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 flex items-center gap-2">
+              {/*<button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 flex items-center gap-2">
                 <Phone className="w-4 h-4" />
                 Call Now
-              </button>
+              </button>*/}
             </div>
           </div>
         </div>
@@ -30,6 +149,7 @@ export default function FirstChoiceLanding() {
 
       {/* Hero Section */}
       <section 
+        id="home"
         style={{
           backgroundImage: "url('/car-park.jpg')",
           backgroundSize: 'cover',
@@ -37,7 +157,7 @@ export default function FirstChoiceLanding() {
           backgroundRepeat: 'no-repeat'
         }}
         className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-20 px-4 ">
-        <div className="max-w-7xl mx-auto text-left mt-100 mb-0">
+        <div className="max-w-7xl mx-auto text-left mt-93 mb-0">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Your <span className="text-yellow-300 text-shadow-black">First Choice</span> for<br />
             Complete Car Solutions
@@ -49,267 +169,527 @@ export default function FirstChoiceLanding() {
       </section>
 
       {/* Features */}
-      <section className=" bg-gray-50">
+      <section className="bg-gray-50">
         <div className='flex md:flex-row flex-col'>
-          <div className="flex md:flex-row flex-col py-12 items-center justify-center gap-8 mx-auto">
-            <div className="text-center">
-              <div className="inline-block p-4 bg-blue-100 rounded-full mb-4">
-                <Shield className="w-8 h-8 text-blue-600" />
+          <div className="flex md:flex-row flex-col py-12 px-16 items-center justify-center gap-8 mx-auto">
+
+            <div className="text-center md:w-1/4 bg-white rounded-lg shadow-md p-6 border border-gray-200 md:h-70">
+              <div className="inline-block p-4 bg-orange-100 rounded-full mb-4 transition-transform duration-300 hover:rotate-12">
+                <Car className="w-8 h-8 text-orange-600" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Trusted Service</h3>
-              <p className="text-gray-600">Licensed and insured for your peace of mind</p>
+              <h3 className="text-xl font-bold mb-2">Car dealership</h3>
+              <p className="text-gray-600">We are a car dealership based in Zimbabwe. We sell a wide range of vehicles.</p>
             </div>
-            <div className="text-center">
-              <div className="inline-block p-4 bg-yellow-100 rounded-full mb-4">
-                <Star className="w-8 h-8 text-yellow-600" />
+
+            <div className="text-center md:w-1/4 bg-white rounded-lg shadow-md p-6 border border-gray-200 md:h-70">
+              <div className="inline-block p-4 bg-red-100 rounded-full mb-4 transition-transform duration-300 hover:rotate-12">
+                <Users className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold mb-2">5-Star Experience</h3>
-              <p className="text-gray-600">Rated excellent by hundreds of satisfied customers</p>
+              <h3 className="text-xl font-bold mb-2">Trusted by clients</h3>
+              <p className="text-gray-600">We are a well renowned car dealer in Zimbabwe with lot of happy clients.</p>
             </div>
-            <div className="text-center">
-              <div className="inline-block p-4 bg-green-100 rounded-full mb-4">
-                <Clock className="w-8 h-8 text-green-600" />
+
+            <div className="text-center md:w-1/4 bg-white rounded-lg shadow-md p-6 border border-gray-200 md:h-70">
+              <div className="inline-block p-4 bg-cyan-100 rounded-full mb-4 transition-transform duration-300 hover:rotate-12">
+                <MapPin className="w-8 h-8 text-cyan-600" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Fast Processing</h3>
-              <p className="text-gray-600">Quick clearance and documentation services</p>
+              <h3 className="text-xl font-bold mb-2">Based in Harare</h3>
+              <p className="text-gray-600">We are based in Harare but we are open to deals from any part of the country.</p>
+            </div>
+
+            <div className="text-center md:w-1/4 bg-white rounded-lg shadow-md p-6 border border-gray-200 md:h-70">
+              <div className="inline-block p-4 bg-indigo-100 rounded-full mb-4 transition-transform duration-300 hover:rotate-12">
+                <DollarSign className="w-8 h-8 text-indigo-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Pre-owned cars deals</h3>
+              <p className="text-gray-600">So apart from selling cars, we also purchase pre-owned vehicles</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-gray-50" id="featured-cars">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* Header */}
+          <div className="text-center mb-12">
+            <p className="text-gray-500 text-sm uppercase tracking-widest mb-2">
+              SOME OF THE CARS WE STOCK
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
+              Featured Cars
+            </h2>
+
+            {/* Filter Buttons */}
+            <div className="flex flex-wrap justify-center gap-4">
+              <button
+                onClick={() => setSelectedCategory('all')}
+                className={`px-6 py-3 rounded-full font-semibold transition-all ${
+                  selectedCategory === 'all'
+                    ? 'bg-blue-700 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                ALL CARS
+              </button>
+              <button
+                onClick={() => setSelectedCategory('sedan')}
+                className={`px-6 py-3 rounded-full font-semibold transition-all ${
+                  selectedCategory === 'sedan'
+                    ? 'bg-blue-700 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                SEDANS
+              </button>
+              <button
+                onClick={() => setSelectedCategory('hatchback')}
+                className={`px-6 py-3 rounded-full font-semibold transition-all ${
+                  selectedCategory === 'hatchback'
+                    ? 'bg-blue-700 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                HATCHBACKS
+              </button>
+              <button
+                onClick={() => setSelectedCategory('truck')}
+                className={`px-6 py-3 rounded-full font-semibold transition-all ${
+                  selectedCategory === 'truck'
+                    ? 'bg-blue-700 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                TRUCKS
+              </button>
             </div>
           </div>
+
+          {/* Cars Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredCars.map((car) => (
+              <div
+                key={car.id}
+                className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+              >
+                {/* Car Image */}
+                <div className="relative h-64 bg-gray-200">
+                  <Image
+                    src={car.image}
+                    alt={car.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Car Details */}
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      {car.name}
+                    </h3>
+                    <span className="text-2xl font-bold text-blue-600">
+                      {car.price}
+                    </span>
+                  </div>
+
+
+                  <p className="text-gray-600 text-sm mb-6 min-h-[48px]">
+                    {car.description}
+                  </p>
+
+                  {/* Features */}
+                  <div className="flex justify-between items-center text-sm text-gray-700 pb-6 border-b border-gray-200">
+                    <div className="flex items-center gap-2">
+                      <Settings className="w-4 h-4 text-gray-500" />
+                      <span>{car.transmission}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Fuel className="w-4 h-4 text-gray-500" />
+                      <span>{car.fuelType}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Gauge className="w-4 h-4 text-red-600" />
+                      <span className="text-red-600">{car.mileage}</span>
+                    </div>
+                  </div>
+
+                  {/* View Details Button */}
+                  {/*<button className="w-full mt-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-md font-semibold hover:from-blue-700 hover:to-blue-800 transition-all">
+                    View Details
+                  </button>*/}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* View All Button */}
+          {filteredCars.length >= 6 && (
+            <div className="text-center mt-12">
+              <Link href="/cars">
+                <button className="px-8 py-4 bg-blue-900 text-white rounded-md font-semibold hover:bg-blue-800 transition-colors">                
+                  View All Cars
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-16 px-4" id="services">
+      <section className="py-16 px-4" id="about">
         <div className="max-w-7xl mx-auto">
-          <div className='flex md:flex-row flex-col'>
-            <div className=' md:w-1/2 w-full'>
-              <Image
-              src='/smiley-woman.jpg'
-              alt='image'
-              width={900}
-              height={300}
-              />
-            </div>
-            <div className="space-y-6 px-12 md:w-1/2 w-full py-8">
-              <h3 className="text-3xl font-bold text-gray-900 mb-8">Why Choose Our Transport Service?</h3>
-              
-              {[
-                { 
-                  icon: Shield, 
-                  title: "Fully Insured Transport", 
-                  desc: "Complete insurance coverage for your peace of mind during transit"
-                },
-                { 
-                  icon: MapPin, 
-                  title: "Door-to-Door Delivery", 
-                  desc: "We pick up from Musina and deliver directly to your specified location"
-                },
-                { 
-                  icon: Users, 
-                  title: "Experienced Drivers", 
-                  desc: "Professional drivers with years of experience in long-distance car transport"
-                }, 
-                {
-                  icon: Truck,
-                  title: "Transport from Musina",
-                  desc: " Professional car transportation services from Musina, South Africa. Safe, secure, and reliable delivery to your destination with full insurance coverage."
-                },
-                {
-                  icon: FileCheck,
-                  title: "Clearance & Documentation",
-                  desc: "Complete clearance assistance including customs documentation, import permits, and all regulatory requirements. We handle the paperwork, you enjoy the drive."
-                }
-              ].map((item, i) => (
-                <div key={i} className="flex flex-col md:items-start items-center gap-4 p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className='flex flex-row gap-5'>
-                    <div className="p-3 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex-shrink-0 left-0 top-0">
-                      <item.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-2 text-gray-900">{item.title}</h4>
-                    </div>
-                  </div>
-                  <div>
-                    <p className="text-gray-600">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-8">
-            {/* New Car Services */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="p-3 bg-purple-100 rounded-lg">
-                  <Car className="w-6 h-6 text-purple-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-1">New Car Services</h3>
-                  <p className="text-sm text-purple-600 font-semibold">Full Support</p>
-                </div>
+          <div className='flex md:flex-row flex-col gap-12 items-center'>
+            {/* Image Section */}
+            <div className='md:w-1/2 w-full'>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src='/smiley-woman.jpg'
+                  alt='About Our Company'
+                  width={900}
+                  height={600}
+                  className="object-cover"
+                />
               </div>
-              <p className="text-gray-600 mb-4">
-                Complete support for new car purchases including financing assistance, insurance setup, registration, and all administrative requirements.
-              </p>
-              <ul className="space-y-2 mb-4">
-                <li className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-purple-600 mt-1">•</span>
-                  Financing assistance
-                </li>
-                <li className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-purple-600 mt-1">•</span>
-                  Insurance setup
-                </li>
-                <li className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-purple-600 mt-1">•</span>
-                  Registration services
-                </li>
-              </ul>
-              <button className="w-full bg-purple-600 text-white py-3 rounded-md font-semibold hover:bg-purple-700">
-                Explore New Cars
-              </button>
             </div>
 
-            {/* Car Advertising */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="p-3 bg-orange-100 rounded-lg">
-                  <Megaphone className="w-6 h-6 text-orange-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-1">Car Advertising & Sales</h3>
-                  <p className="text-sm text-orange-600 font-semibold">Sell Fast</p>
-                </div>
+            {/* Content Section */}
+            <div className="md:w-1/2 w-full space-y-6">
+              <div>
+                <p className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-2">About Us</p>
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">About Our Company</h2>
+                <div className="w-20 h-1 bg-blue-600 mb-6"></div>
               </div>
-              <p className="text-gray-600 mb-4">
-                Professional car advertising services to help you sell your vehicle quickly and at the best price. We handle marketing, viewings, and negotiations.
-              </p>
-              <ul className="space-y-2 mb-4">
-                <li className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-orange-600 mt-1">•</span>
-                  Professional photography
-                </li>
-                <li className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-orange-600 mt-1">•</span>
-                  Multi-platform advertising
-                </li>
-                <li className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-orange-600 mt-1">•</span>
-                  Negotiation support
-                </li>
-              </ul>
-              <button className="w-full bg-orange-600 text-white py-3 rounded-md font-semibold hover:bg-orange-700">
-                Sell My Car
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Why Choose Section */}
-      <section className="py-16 px-4 bg-gray-50" id="about">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose First Choice?</h2>
-              <p className="text-gray-600 mb-8">
-                With years of experience in the automotive industry and specialized expertise in South African car transport and clearance, First Choice has become the trusted partner for car buyers and sellers across the region.
+              <p className="text-gray-700 text-lg leading-relaxed">
+                We are a trusted car dealership based in Zimbabwe, dedicated to providing exceptional automotive solutions to our clients. With years of experience in the industry, we have built a reputation for reliability, transparency, and customer satisfaction.
               </p>
-              
+
               <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-bold text-lg mb-1">Expert Knowledge</h4>
-                    <p className="text-gray-600">Deep understanding of South African automotive regulations and Musina transport logistics.</p>
-                  </div>
+                <div className="border-l-4 border-blue-600 pl-4">
+                  <h3 className="font-bold text-xl text-gray-900 mb-2">Our Mission</h3>
+                  <p className="text-gray-600">
+                    To provide quality vehicles and comprehensive automotive services that exceed our customers&#39; expectations, making car ownership accessible and hassle-free for everyone.
+                  </p>
                 </div>
-                
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-bold text-lg mb-1">Full Service Solution</h4>
-                    <p className="text-gray-600">From transport to clearance to sales - we handle every aspect of your car journey.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-bold text-lg mb-1">Trusted Reputation</h4>
-                    <p className="text-gray-600">Built on transparency, reliability, and exceptional customer service.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-white rounded-lg p-6 text-center shadow-lg">
-                <div className="text-4xl font-bold text-blue-600 mb-2">500+</div>
-                <div className="text-gray-600">Cars Transported</div>
+                <div className="border-l-4 border-blue-600 pl-4">
+                  <h3 className="font-bold text-xl text-gray-900 mb-2">What We Offer</h3>
+                  <p className="text-gray-600">
+                    From new and pre-owned vehicle sales to transport services from Musina, clearance assistance, and complete documentation support - we handle every aspect of your automotive needs with professionalism and care.
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-blue-600 pl-4">
+                  <h3 className="font-bold text-xl text-gray-900 mb-2">Our Commitment</h3>
+                  <p className="text-gray-600">
+                    Based in Harare but serving clients across Zimbabwe, we are committed to delivering exceptional service, transparent pricing, and ongoing support throughout your car ownership journey.
+                  </p>
+                </div>
               </div>
-              <div className="bg-white rounded-lg p-6 text-center shadow-lg">
-                <div className="text-4xl font-bold text-blue-600 mb-2">98%</div>
-                <div className="text-gray-600">Client Satisfaction</div>
-              </div>
-              <div className="bg-white rounded-lg p-6 text-center shadow-lg">
-                <div className="text-4xl font-bold text-blue-600 mb-2">24/7</div>
-                <div className="text-gray-600">Support Available</div>
-              </div>
-              <div className="bg-white rounded-lg p-6 text-center shadow-lg">
-                <div className="text-4xl font-bold text-blue-600 mb-2">5★</div>
-                <div className="text-gray-600">Average Rating</div>
+
+              <div className="flex gap-4 pt-4">
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-blue-600">500+</p>
+                  <p className="text-gray-600 text-sm">Happy Clients</p>
+                </div>
+                <div className="w-px bg-gray-300"></div>
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-blue-600">1000+</p>
+                  <p className="text-gray-600 text-sm">Cars Sold</p>
+                </div>
+                <div className="w-px bg-gray-300"></div>
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-blue-600">10+</p>
+                  <p className="text-gray-600 text-sm">Years Experience</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <section className="py-16 px-4 bg-gray-50" id="services">
+        <div className='max-w-7xl mx-auto'>
+          
+          {/* Header */}
+          <div className="text-center mb-16">
+            <p className="text-gray-500 text-sm uppercase tracking-widest mb-2">OUR SERVICES</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">What We Provide You With</h2>
+            <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
+          </div>
+
+          {/* Services Layout */}
+          <div className="relative flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8">
+            
+            {/* Left Side Services */}
+            <div className="md:w-1/3 space-y-16">
+              {/* Transport & Clearance */}
+              <div className="text-center md:text-right">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full border-2 border-dashed border-gray-300 mb-4">
+                  <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">TRANSPORT & CLEARANCE</h3>
+                <p className="text-gray-600 text-sm">
+                  Professional car transportation from Musina with full insurance coverage and complete clearance assistance including customs documentation.
+                </p>
+              </div>
+
+              {/* New Car Services */}
+              <div className="text-center md:text-right">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full border-2 border-dashed border-gray-300 mb-4">
+                  <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">NEW CAR SERVICES</h3>
+                <p className="text-gray-600 text-sm">
+                  Complete support for new car purchases including financing assistance, insurance setup, and all registration requirements.
+                </p>
+              </div>
+            </div>
+
+            {/* Center Image */}
+            <div className="md:w-1/3 flex items-center justify-center">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gray-200 rounded-full opacity-20 blur-3xl"></div>
+                <Image
+                  src="/BMW-preview.png"
+                  alt="Vehicle"
+                  width={400}
+                  height={400}
+                  className="relative z-10 rounded-full object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Right Side Services */}
+            <div className="md:w-1/3 space-y-16">
+              {/* Car Advertising */}
+              <div className="text-center md:text-left">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full border-2 border-dashed border-gray-300 mb-4">
+                  <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">CAR ADVERTISING</h3>
+                <p className="text-gray-600 text-sm">
+                  Professional car advertising services to help you sell your vehicle quickly at the best price with marketing and negotiation support.
+                </p>
+              </div>
+
+              {/* Pre-Owned Purchases */}
+              <div className="text-center md:text-left">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full border-2 border-dashed border-gray-300 mb-4">
+                  <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">PRE-OWNED PURCHASES</h3>
+                <p className="text-gray-600 text-sm">
+                  We purchase pre-owned vehicles at competitive prices with instant valuation, quick payment, and hassle-free paperwork.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>    
 
       {/* CTA Section */}
-      <section className="bg-gray-900 text-white py-16 px-4" id="contact">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get Started Today</h2>
-          <p className="text-gray-300 mb-12">Ready to experience the First Choice difference? Contact us now.</p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="text-center">
-              <div className="inline-block p-4 bg-blue-600 rounded-full mb-4">
-                <Phone className="w-6 h-6" />
-              </div>
-              <h3 className="font-bold text-lg mb-2">Call Us</h3>
-              <p className="text-gray-300 text-sm mb-1">+263 783 456 789</p>
-              <p className="text-gray-400 text-sm">Available 24/7</p>
-            </div>
+      <section id="contact"  className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             
-            <div className="text-center">
-              <div className="inline-block p-4 bg-blue-600 rounded-full mb-4">
-                <Mail className="w-6 h-6" />
-              </div>
-              <h3 className="font-bold text-lg mb-2">Email Us</h3>
-              <p className="text-gray-300 text-sm mb-1">info@firstchoicecars.co.zw</p>
-              <p className="text-gray-400 text-sm">Quick response guaranteed</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="inline-block p-4 bg-blue-600 rounded-full mb-4">
-                <MapPin className="w-6 h-6" />
-              </div>
-              <h3 className="font-bold text-lg mb-2">Visit Us</h3>
-              <p className="text-gray-300 text-sm mb-1">CDB, Harare, Zimbabwe</p>
-              <p className="text-gray-400 text-sm">First Choice Carsales</p>
-            </div>
-          </div>
+            {/* Contact Us Column */}
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-8">Contact Us</h2>
+              
+              <div className="space-y-6">
+                {/* Phone */}
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-gray-400 text-sm uppercase tracking-wide mb-1">
+                      PHONE NUMBER
+                    </p>
+                    <a 
+                      href="tel:+263783370612" 
+                      className="text-white text-lg font-semibold hover:text-blue-400 transition-colors"
+                    >
+                      +263 783 123 123
+                    </a>
+                  </div>
+                </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <button className="bg-yellow-400 text-gray-900 px-8 py-3 rounded-md font-semibold hover:bg-yellow-500 flex items-center justify-center gap-2">
-              <Phone className="w-5 h-5" />
-              Get Free Quote
-            </button>
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
-              className="px-4 py-3 rounded-md text-gray-900 flex-1"
-            />
+                {/* Email */}
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-gray-400 text-sm uppercase tracking-wide mb-1">
+                      EMAIL ADDRESS
+                    </p>
+                    <a 
+                      href="mailto:info@firstchoicecars.co.zw" 
+                      className="text-white text-lg font-semibold hover:text-blue-400 transition-colors"
+                    >
+                      click to send
+                    </a>
+                  </div>
+                </div>
+
+                {/* Address */}
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-gray-400 text-sm uppercase tracking-wide mb-1">
+                      ADDRESS
+                    </p>
+                    <p className="text-white text-lg font-semibold">
+                      13 Percy Flynn, Belvedere, Harare
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Our Info Column */}
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-8">Our Info</h2>
+              
+              <nav className="space-y-4">
+                <a 
+                  href="#home" 
+                  className="block text-gray-300 text-lg hover:text-white hover:translate-x-2 transition-all"
+                >
+                  Home
+                </a>
+                <a 
+                  href="#about" 
+                  className="block text-gray-300 text-lg hover:text-white hover:translate-x-2 transition-all"
+                >
+                  About Us
+                </a>
+                <a 
+                  href="#services" 
+                  className="block text-gray-300 text-lg hover:text-white hover:translate-x-2 transition-all"
+                >
+                  Services
+                </a>
+                <a 
+                  href="#featured-cars" 
+                  className="block text-gray-300 text-lg hover:text-white hover:translate-x-2 transition-all"
+                >
+                  Gallery
+                </a>
+                <a 
+                  href="#contact" 
+                  className="block text-gray-300 text-lg hover:text-white hover:translate-x-2 transition-all"
+                >
+                  Contact
+                </a>
+              </nav>
+            </div>
+
+            {/* Just a Click Column */}
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-8">Just a Click</h2>
+              
+              <div className="space-y-6">
+                {/* Inquire Now Button */}
+                
+                  <a href="#contact"
+                  className="block w-full bg-red-600 text-white text-center py-4 px-6 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors"
+                >
+                  INQUIRE NOW
+                </a>
+
+                {/* Social Media Icons */}
+                <div className="flex gap-4">
+                  
+                    <a href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center transition-colors group"
+                    aria-label="Facebook"
+                  >
+                    <Facebook className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+                  </a>
+                  
+                  
+                    <a href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-blue-400 hover:bg-blue-500 rounded-lg flex items-center justify-center transition-colors group"
+                    aria-label="Instagram"
+                  >
+                    <Instagram className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+                  </a>
+
+                  
+                    <a href="https://twitter.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-sky-500 hover:bg-sky-600 rounded-lg flex items-center justify-center transition-colors group"
+                    aria-label="Twitter"
+                  >
+                    <Twitter className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+                  </a>
+                </div>
+
+                {/* Additional Social Media */}
+                <div className="flex gap-4">
+                  
+                    <a href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-blue-700 hover:bg-blue-800 rounded-lg flex items-center justify-center transition-colors group"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+                  </a>
+
+                  
+                    <a href="https://youtube.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-red-500 hover:bg-red-600 rounded-lg flex items-center justify-center transition-colors group"
+                    aria-label="YouTube"
+                  >
+                    <Youtube className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+                  </a>
+
+                  
+                    <a href="https://wa.me/263783370612"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-green-500 hover:bg-green-600 rounded-lg flex items-center justify-center transition-colors group"
+                    aria-label="WhatsApp"
+                  >
+                    <MessageCircle className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -322,7 +702,7 @@ export default function FirstChoiceLanding() {
             <span className="text-white font-bold">First Choice</span>
           </div>
           <div className="text-center text-sm">
-            © 2024 First Choice Car Sales & Services. All rights reserved.<br />
+            © 2025 First Choice Car Sales & Services. All rights reserved.<br />
             <span className="text-xs">Licensed car dealer and transport service provider</span>
           </div>
         </div>
